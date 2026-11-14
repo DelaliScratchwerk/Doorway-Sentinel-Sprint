@@ -1,0 +1,1 @@
+"""Doorway Sentinel Python hub."""

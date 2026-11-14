@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.DS_Store
+.env
+data/*
+!data/sample_events.csv
+*.pt
+*.onnx
+*.mp4
+*.mov
+*.avi
+*.jpg
+*.png
+
