@@ -1,9 +1,6 @@
 // Alternative to the working sketch; upload manually through Arduino IDE.
 // D7/D8 match Documents/Arduino/sketch_nov7a/sketch_nov7a.ino.
-// Confirm that this is the tested P7 SONIC sketch before enabling upload.
-constexpr bool PIN_MAPPING_CONFIRMED = false;
-static_assert(PIN_MAPPING_CONFIRMED,
-              "Confirm the working P7 SONIC TRIG/ECHO pins before uploading; see arduino/README.md");
+// Operator confirmed this working P7 SONIC mapping; see arduino/README.md.
 constexpr int TRIG_PIN = 7;
 constexpr int ECHO_PIN = 8;
 constexpr unsigned long SAMPLE_PERIOD_MS = 200;
