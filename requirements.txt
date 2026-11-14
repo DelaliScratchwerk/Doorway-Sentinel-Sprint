@@ -1,0 +1,4 @@
+# Known Intel macOS wheel; avoid compiling OpenCV on the demo Mac.
+opencv-python==4.11.0.86
+numpy==1.26.4
+pyserial==3.5

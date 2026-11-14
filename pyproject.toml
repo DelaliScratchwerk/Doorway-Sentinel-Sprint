@@ -1,0 +1,9 @@
+[project]
+name = "doorway-sentinel-hub"
+version = "0.1.0"
+description = "Camera, ultrasonic serial input and CPU person detection for Doorway Sentinel"
+requires-python = ">=3.10,<3.13"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
