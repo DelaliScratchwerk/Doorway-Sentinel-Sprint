@@ -8,6 +8,9 @@ data/*
 !data/sample_events.csv
 *.pt
 *.onnx
+*.caffemodel
+models/*
+!models/README.md
 *.mp4
 *.mov
 *.avi
