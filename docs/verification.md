@@ -16,15 +16,19 @@
   4.11.0.86, NumPy 1.26.4, pytest 8.3.5. `pip check`: no broken requirements.
 - OpenCV import: **passed**, reporting 4.11.0.
 - AVFoundation backend availability: **passed** (`hasBackend` returned true).
-- Probed indices 0–5 through AVFoundation: **no frames read**. Each reported
+- Initial sandbox probe of indices 0–5 through AVFoundation: **no frames read**. Each reported
   `OpenCV: camera access has been denied`. This does not determine whether
   Camo is available after privacy permission is granted.
-- Operator action required: enable Camera access for the launching app in
-  System Settings → Privacy & Security → Camera, restart it if necessary,
-  and repeat the probe from a permitted Terminal/VS Code session.
-- Camo index and visual iPhone confirmation: **pending operator verification**.
-- Actual resolution / approximate FPS: pending.
-- No claim of successful hardware integration until the above are confirmed.
+- Subsequent physical test: **operator-reported success** on the Early 2015
+  Intel MacBook Pro using:
+  `python -m hub.camera --preview --camera-index 1 --backend avfoundation --seconds 20`.
+- Index 1, AVFoundation, live video and macOS camera authorization: **working**.
+- Actual preview: **640x480**, approximately **8.4 FPS**, as observed by operator.
+- `AVCaptureDeviceTypeExternal` deprecation warning: observed, nonblocking.
+- Camo/iPhone identity: **lens-cover test still pending**. Cover the iPhone
+  lens and confirm the OpenCV image changes, then uncover it and confirm
+  live movement. Working index 1 is the initial hub default, still configurable.
+- This confirms the camera preview milestone, not serial integration or detection accuracy.
 
 ## Software checks
 
