@@ -28,7 +28,8 @@
 - Camo/iPhone identity: **lens-cover test still pending**. Cover the iPhone
   lens and confirm the OpenCV image changes, then uncover it and confirm
   live movement. Working index 1 is the initial hub default, still configurable.
-- This confirms the camera preview milestone, not serial integration or detection accuracy.
+- The standalone camera test confirms preview operation; subsequent USB
+  integration evidence is recorded below. Detection accuracy remains untested.
 
 ## Software checks
 
@@ -50,7 +51,9 @@
   and baud, numeric-only centimeters or `nan`, approximately 200 ms period.
 - **Board-toolchain compile passed**, Arduino CLI 1.5.1, UNO R4 WiFi core
   1.6.0 (`arduino:renesas_uno:unor4wifi`). 52,672 bytes flash / 6,740 bytes RAM.
-- **No firmware upload performed.** Operator will verify/upload in Arduino IDE.
+- **No firmware upload performed by Codex.** Firmware upload is managed
+  manually by the operator in Arduino IDE. Subsequent USB integration
+  evidence is recorded below.
 - Threaded pyserial input implemented with bounded framing, invalid/no-echo
   handling, monotonic freshness, UTC timestamps, reconnects and 5 Hz mock mode.
 - Serial phase regression run: **42 tests passed**, including real pyserial
@@ -73,7 +76,20 @@
   status 0 and requested permission, then failed to initialize. The operator's
   successful Terminal camera test remains valid; permissions depend on the
   launching application. Repeat combined preview in the authorized Terminal.
-- **Live measured-distance overlay: pending manual firmware upload and test.**
+- **Combined camera + measured USB distance: demonstrated by the operator's
+  screenshot on 2026-11-14.** The OpenCV window shows camera index 1,
+  **640x480**, approximately **9.8 FPS**, and **57.0 cm [USB]** with detection
+  off. This establishes the first combined-preview milestone using real
+  serial input. The screenshot was not added to Git.
+- The screenshot does not establish distance calibration, lens-cover identity,
+  USB disconnect/reconnect behavior, or person-detection performance.
+
+## Pre-merge checks — 2026-11-14
+
+- User explicitly approved committing and merging the completed phase into main.
+- Local regression run: **66 tests passed**.
+- Working implementation was already committed and pushed; added the new
+  operator-provided integration result to documentation before merging.
 
 ## CPU person detection phase
 
@@ -98,10 +114,11 @@
 ## Pending physical acceptance
 
 1. Lens-cover test to confirm iPhone/Camo identity at index 1.
-2. Manual streaming firmware upload; check numeric output at 9600 baud, ~5 Hz.
+2. Confirm the numeric stream's 9600-baud configuration and approximately 5 Hz
+   sampling rate; the screenshot confirms a usable reading, not its cadence.
 3. Compare reported distances with known physical distances.
-4. Run combined preview with real measured centimeters; unplug/reconnect USB
-   and confirm video remains responsive and the reading recovers.
+4. Unplug/reconnect USB during the combined preview and confirm video remains
+   responsive and the reading recovers.
 5. Evaluate real person detection, CPU latency and preview FPS in the doorway.
 
 The exact commands are in [the demo guide](demo_guide.md). No hardware pass is

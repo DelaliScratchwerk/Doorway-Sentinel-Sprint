@@ -8,8 +8,10 @@ person, measures proximity, displays an alert, and records a shared CSV event.
 serial input, full simulation and optional lightweight CPU person detection.
 The operator verified live OpenCV video at index 1, AVFoundation, 640x480 and
 approximately 8.4 FPS. A lens-cover test still needs to confirm iPhone identity.
-The new streaming firmware is ready for manual upload; a live overlay of
-**measured** ultrasonic distances remains the next hardware acceptance test.
+The operator subsequently demonstrated the combined window with a **57.0 cm
+USB distance reading**, 640x480 video and approximately **9.8 FPS** (detection
+off). Distance calibration, USB disconnect/reconnect and live person-detection
+evaluation remain to be checked.
 See the [demo guide](docs/demo_guide.md) and [verification record](docs/verification.md).
 
 ## macOS setup
@@ -107,9 +109,9 @@ Camera failures stop the preview; missing serial data permits video to continue.
 ## Next implementation steps
 
 1. Confirm the tested camera is the iPhone using a lens-cover test.
-2. Upload `arduino/ultrasonic_stream/ultrasonic_stream.ino` manually in Arduino
-   IDE. It preserves confirmed D7/D8 pins and streams at 9600 baud, ~5 Hz.
-3. Verify the combined window with **measured** distances and USB unplug/replug.
+2. Confirm numeric serial output at 9600 baud, ~5 Hz, and compare readings
+   with known physical distances. Firmware uploads remain manual in Arduino IDE.
+3. Verify USB unplug/replug recovery during the working combined preview.
 4. Benchmark the CPU detector on live people in the controlled doorway.
 5. Add fusion states (`UNKNOWN`, `CLEAR`, `APPROACHING`, `ALERT`), a configurable
    50 cm alert threshold, confirmation, cooldown and CSV logging.
@@ -138,7 +140,7 @@ environments, live data, footage, and model weights.
 Original project checklist, retained as the roadmap:
 
 - [ ] Agree on and test the CSV contract.
-- [x] Implement Arduino serial streaming alternative and Python reader (manual upload pending).
+- [x] Implement Arduino serial streaming alternative and Python reader (combined USB overlay demonstrated).
 - [x] Connect a CPU camera model (physical person-detection evaluation pending).
 - [ ] Integrate and test combined rows and alerts.
 - [ ] Run the doorway demo.
