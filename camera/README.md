@@ -1,9 +1,11 @@
 # First hands-on gate: Camo → OpenCV
 
 Camo Camera on the iPhone SE (3rd generation) and the Camo Studio 2.9.0
-preview already work, as reported by the operator. **Python/OpenCV access has
-not yet been verified.** A readable built-in camera does not establish that
-Camo works. No camera frames are recorded by these commands.
+preview already work, as reported by the operator. **The operator subsequently
+verified live OpenCV video at index 1 using AVFoundation, 640x480, about 8.4 FPS.**
+macOS authorization worked in that launching application. A lens-cover test
+is still needed to confirm iPhone identity. A readable built-in camera does
+not establish that Camo works. No frames are recorded by these commands.
 
 From the repository root on macOS, activate the environment:
 
@@ -45,6 +47,9 @@ Record the selected index, actual dimensions, FPS, and outcome in
 `docs/verification.md`. Re-probe after reconnecting devices or rebooting;
 indices can change. A successful single-frame check alone does not prove
 that this is Camo or that the feed remains live.
+
+The reported `AVCaptureDeviceTypeExternal` deprecation warning did not block
+the successful preview. Keep this separate from actual capture failures.
 
 If the camera fails:
 
